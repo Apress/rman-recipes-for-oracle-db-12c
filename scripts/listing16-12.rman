@@ -1,0 +1,5 @@
+run{
+allocate channel d1 device type disk;
+allocate channel d2 device type disk;
+backup database;
+}

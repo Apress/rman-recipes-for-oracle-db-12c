@@ -1,0 +1,10 @@
+create script full_disk_db
+comment 'Full Backup as Backupset to Disk'
+{
+   allocate channel c1 type disk
+       format 'c:\backup\rman_%U.rman';
+   backup
+      database
+      include current controlfile;
+   release channel c1;
+ }

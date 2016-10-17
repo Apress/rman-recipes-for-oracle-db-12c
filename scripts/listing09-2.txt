@@ -1,0 +1,2 @@
+00 11 * * 0 /opt/oracle/tools/rman_full.disk.sh > /opt/oracle/tools/rman_full.disk.log 2>&1
+00 11 * * 0 /opt/oracle/tools/rman_arc.disk.sh > /opt/oracle/tools/rman_arc.disk.log 2>&1

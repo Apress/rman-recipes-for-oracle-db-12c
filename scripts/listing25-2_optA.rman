@@ -1,0 +1,11 @@
+run {
+allocate channel c1 type disk;
+allocate channel c2 type disk;
+allocate channel c3 type disk;
+allocate channel c4 type disk;
+allocate channel c5 type disk;
+allocate channel c6 type disk;
+allocate channel c7 type disk;
+allocate channel c8 type disk;
+ backup database;
+}

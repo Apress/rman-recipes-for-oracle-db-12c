@@ -1,0 +1,7 @@
+rman msgno log=rman_debug01.log trace rman_debug01.trc << EOF
+set echo on
+connect target /
+debug io;
+backup database;
+debug off;
+EOF

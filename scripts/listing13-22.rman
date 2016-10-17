@@ -1,0 +1,4 @@
+recover table SCOTT.ACCOUNTS
+until scn 2012991
+auxiliary destination '+DG1'
+;

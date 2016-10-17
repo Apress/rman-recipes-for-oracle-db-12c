@@ -1,0 +1,22 @@
+#!/bin/bash
+export NLS_DATE_FORMAT="DD-MON-RRRR HH24:MI:SS"
+export dateNOW=$(date +%Y%m%d%H%M%S)
+rman msgno log=${ORACLE_SID}_${dateNOW}_rmanout.log \
+  trace=${ORACLE_SID}_${dateNOW}_rmanout.trc << EOF
+set echo on
+connect target /
+show all;
+report schema;
+host "sqlplus '/ as sysdba' @precmd.sql";
+host "mv precmd.lst ${ORACLE_SID}_${dateNOW}_precmd.lst";
+run {
+ sql "alter session set max_dump_file_size=UNLIMITED";
+ sql "alter session set tracefile_identifier=''rmanbackup_10046_trace_file''";
+ sql "alter session set events ''10046 trace name context forever, level 12''";
+ debug all;
+ <<<INSERT_RMAN_COMMAND_HERE_THAT_YOU_WANT_TO_MONITOR>>>
+ debug off;
+}
+host "sqlplus '/ as sysdba' @postcmd.sql";
+host "mv postcmd.lst ${ORACLE_SID}_${dateNOW}_postcmd.lst";
+EOF

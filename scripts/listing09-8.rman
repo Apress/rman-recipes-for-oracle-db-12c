@@ -1,0 +1,11 @@
+create global script gs_arc_disk_bkup
+comment 'Global Script to Backup Arc Logs Delete Input'
+{
+   allocate channel c1 type disk
+      format 'C:\oraback\%U.rman';
+   backup
+      archivelog
+      all
+      delete input;
+    release channel c1;
+}

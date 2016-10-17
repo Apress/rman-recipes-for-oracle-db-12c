@@ -1,0 +1,9 @@
+create script full_disk_db
+{
+    allocate channel c1 type disk
+        format '+DG1/%U.rmb';
+    backup
+         database
+    include current controlfile;
+    release channel c1;
+}

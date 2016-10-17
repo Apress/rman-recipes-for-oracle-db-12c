@@ -1,0 +1,6 @@
+connect target /
+run {
+        allocate channel c1 type disk connect rman/secretsauze@rman1 format '+BACKUP/%u.rmb';
+        allocate channel c2 type disk connect rman/secretsauze@rman2 format '+BACKUP/%u.rmb';
+        backup tablespace rmantest;
+}

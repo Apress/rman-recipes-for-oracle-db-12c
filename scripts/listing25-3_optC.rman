@@ -1,0 +1,11 @@
+run {
+allocate channel c1 type disk format '/dwbackup1/%u.rmb';
+allocate channel c2 type disk format '/dwbackup1/%u.rmb';
+allocate channel c3 type disk format '/dwbackup1/%u.rmb';
+allocate channel c4 type disk format '/dwbackup1/%u.rmb';
+allocate channel c5 type disk format '/dwbackup1/%u.rmb';
+allocate channel c6 type disk format '/dwbackup1/%u.rmb';
+allocate channel c7 type disk format '/dwbackup1/%u.rmb';
+allocate channel c8 type disk format '/dwbackup1/%u.rmb';
+ backup database;
+}

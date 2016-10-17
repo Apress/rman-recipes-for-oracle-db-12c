@@ -1,0 +1,5 @@
+run {
+   allocate channel c1 type sbt PARMS='ENV=(NB_ORA_CLIENT=RMAN1)' connect='rman/secretsauze@rman1';
+   allocate channel c2 type sbt PARMS='ENV=(NB_ORA_CLIENT=RMAN2)' connect='rman/secretsauze@rman2';
+   backup database;
+}

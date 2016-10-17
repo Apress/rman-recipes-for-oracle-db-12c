@@ -1,0 +1,5 @@
+recover table scott.accounts
+until scn 1792736
+auxiliary destination '+DG1'
+datapump destination '/tmp' dump file 'accounts.dmp'
+notableimport;

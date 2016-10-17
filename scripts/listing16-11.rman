@@ -1,0 +1,5 @@
+run {
+backup duration 1:00 partial minimize load database;
+backup archivelog all;
+backup current controlfile;
+}

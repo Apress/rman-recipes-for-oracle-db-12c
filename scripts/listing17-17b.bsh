@@ -1,0 +1,32 @@
+#!/bin/bash
+#
+if [ $# -ne 2 ]; then
+  echo "Usage: $0 SID threshold"
+  exit 1
+fi
+# source oracle OS variables
+. /var/opt/oracle/oraset $1
+crit_var2=$(sqlplus -s <<EOF
+/ as sysdba
+SET HEAD OFF FEEDBACK OFF
+SELECT COUNT(*)
+FROM
+(
+SELECT name
+FROM v\$datafile
+MINUS
+SELECT DISTINCT
+ f.name
+FROM v\$backup_datafile d
+    ,v\$datafile        f
+WHERE d.file#     = f.file#
+AND   d.completion_time > sysdate - $2);
+EOF)
+#
+if [ $crit_var2 -ne 0 ]; then
+  echo "datafile not backed up on $1" | mailx -s "backup problem" dbasupport@gmail.com
+else
+  echo "datafiles are backed up..."
+fi
+#
+exit 0

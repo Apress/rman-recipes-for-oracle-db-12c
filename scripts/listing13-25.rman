@@ -1,0 +1,4 @@
+recover table  arup.accounts
+until scn 1799975
+auxiliary destination '+DG1'
+remap tablespace users:accdata;

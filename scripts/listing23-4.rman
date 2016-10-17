@@ -1,0 +1,8 @@
+connect target /
+run {
+        allocate channel c1 type disk connect rman/secretsauze@rman1; 
+        allocate channel c2 type disk connect rman/secretsauze@rman2;
+        restore  
+                (datafile 1,3,5 channel c1)
+                (datafile 2,4,6 channel c2);
+}

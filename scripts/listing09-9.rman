@@ -1,0 +1,9 @@
+replace script full_disk_db
+{
+   allocate channel c1 type disk
+       format 'c:\backup\rman_%U.rman';
+   backup
+      database
+      include current controlfile;
+   release channel c1;
+}

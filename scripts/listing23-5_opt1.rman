@@ -1,0 +1,3 @@
+configure channel 1 device type 'sbt' connect 'rman/secretsauze@rman1' PARMS "ENV=(NB_ORA_CLIENT=RMAN1)";
+configure channel 2 device type 'sbt' connect 'rman/secretsauze@rman2' PARMS "ENV=(NB_ORA_CLIENT=RMAN2)";
+
